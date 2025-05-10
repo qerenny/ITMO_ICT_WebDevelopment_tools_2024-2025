@@ -19,12 +19,10 @@ def create_transaction(
     Создаём новую транзакцию и, если указан account_id, 
     автоматически меняем баланс счёта (account.balance).
     """
-    # Проверяем пользователя
     user = session.get(User, trans.user_id)
     if not user:
         raise HTTPException(status_code=404, detail="User not found")
 
-    # Проверяем категорию
     cat = session.get(Category, trans.category_id)
     if not cat:
         raise HTTPException(status_code=404, detail="Category not found")
@@ -45,8 +43,6 @@ def create_transaction(
         if not account:
             raise HTTPException(status_code=404, detail="Account not found")
 
-        # Прибавляем к балансу значение транзакции 
-        # (если amount отрицательный — баланс уменьшится)
         account.balance += trans.amount
         session.add(account)
 
@@ -109,7 +105,6 @@ def update_transaction(
     if old_account_id is not None:
         old_acc = session.get(Account, old_account_id)
         if old_acc:
-            # Вычитаем старую сумму (если она была -100, то вычесть -100 = прибавить 100)
             old_acc.balance -= old_amount
             session.add(old_acc)
 

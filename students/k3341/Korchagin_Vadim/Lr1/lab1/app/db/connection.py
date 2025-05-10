@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-db_url = os.getenv('DB_ADMIN')
+db_url = os.getenv('PR1_DB_URL')
 engine = create_engine(db_url, echo=True)
 
 def init_db() -> None:

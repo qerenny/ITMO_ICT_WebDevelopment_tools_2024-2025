@@ -47,8 +47,15 @@ class CreateGoal(BaseModel):
     deadline: Optional[datetime] = None
     current_amount: float = 0.0
 
+class CreateUserCategoryPreference(BaseModel):
+    user_id: int
+    category_id: int
+    notification_enabled: bool = True
+    
+# ----------------------------------------------------------------
+# ----------------------------------------------------------------
+# ----------------------------------------------------------------
 
-# Для чтения:
 class ReadCategory(BaseModel):
     id: int
     name: str
@@ -85,12 +92,6 @@ class ReadGoal(BaseModel):
     deadline: Optional[datetime]
     class Config:
         from_attributes = True
-        
-        
-class CreateUserCategoryPreference(BaseModel):
-    user_id: int
-    category_id: int
-    notification_enabled: bool = True
 
 class ReadUserCategoryPreference(BaseModel):
     user_id: int
@@ -113,7 +114,6 @@ class ReadUserWithRelations(UserOut):
     class Config:
         from_attributes = True
 
-
 class ReadAccountWithTransactions(ReadAccount):
     transactions: List[ReadTransaction] = []
 
@@ -126,14 +126,11 @@ class ReadCategoryWithUsers(ReadCategory):
     class Config:
         from_attributes = True
 
-
 class ReadGoalWithUser(ReadGoal):
     user: Optional[UserOut] = None
 
     class Config:
         from_attributes = True
-
-
 
 class ReadBudgetFull(ReadBudget):
     user: Optional[UserOut] = None
@@ -141,8 +138,6 @@ class ReadBudgetFull(ReadBudget):
 
     class Config:
         from_attributes = True
-
-
 
 class ReadTransactionFull(ReadTransaction):
     user: Optional[UserOut] = None
