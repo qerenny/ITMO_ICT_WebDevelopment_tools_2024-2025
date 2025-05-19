@@ -4,7 +4,7 @@ import time
 from bs4 import BeautifulSoup
 from passlib.context import CryptContext
 from models.finance_models import User
-from sqlmodel import Session
+from sqlmodel.ext.asyncio.session import AsyncSession
 from db.connection import engine
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -38,7 +38,7 @@ async def parse_and_save(session: aiohttp.ClientSession, url: str) -> None:
             first_name = base_username
             last_name = "Unknown"
 
-        with Session(engine) as db:
+        async with AsyncSession(engine) as db:
             user = User(
                 username=username,
                 hashed_password=hashed_password,
@@ -47,12 +47,13 @@ async def parse_and_save(session: aiohttp.ClientSession, url: str) -> None:
                 email=email,
             )
             db.add(user)
-            db.commit()
+            await db.commit()
 
         print(f"Async: User added {username} ({first_name} {last_name})")
 
     except Exception as e:
         print(f"Async: Error {url}: {e}")
+
 
 
 async def main(urls: list[str]) -> None:
