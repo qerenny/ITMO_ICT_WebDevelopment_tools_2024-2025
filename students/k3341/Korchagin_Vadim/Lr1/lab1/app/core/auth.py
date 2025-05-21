@@ -6,8 +6,8 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from sqlmodel import Session
 from datetime import datetime, timedelta
 
-from app.db.connection import get_session
-from app.models.finance_models import User
+from db.connection import get_session
+from models.finance_models import User
 
 JWT_SECRET = os.getenv("JWT_SECRET", "SUPERSECRET")
 JWT_ALGORITHM = "HS256"

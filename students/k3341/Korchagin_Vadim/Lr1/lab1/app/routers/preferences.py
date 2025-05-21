@@ -2,9 +2,9 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import Session, select
 from typing import List
 
-from app.db.connection import get_session
-from app.models.finance_models import UserCategoryPreference, User, Category
-from app.schemas.finance_schemas import CreateUserCategoryPreference, ReadUserCategoryPreference
+from db.connection import get_session
+from models.finance_models import UserCategoryPreference, User, Category
+from schemas.finance_schemas import CreateUserCategoryPreference, ReadUserCategoryPreference
 
 router = APIRouter(prefix="/preferences", tags=["Preferences"])
 

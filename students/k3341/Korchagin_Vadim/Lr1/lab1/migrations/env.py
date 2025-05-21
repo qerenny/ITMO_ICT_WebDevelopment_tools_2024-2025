@@ -7,7 +7,7 @@ from sqlmodel import SQLModel
 from alembic import context
 
 # Импортируем модели
-from app.models.finance_models import User, Category, Transaction, Budget, Account, Goal, UserCategoryPreference
+from models.finance_models import User, Category, Transaction, Budget, Account, Goal, UserCategoryPreference
 
 from dotenv import load_dotenv
 load_dotenv()

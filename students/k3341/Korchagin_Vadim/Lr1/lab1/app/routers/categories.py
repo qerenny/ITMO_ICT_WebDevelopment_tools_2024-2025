@@ -2,9 +2,9 @@ from fastapi import APIRouter, Depends, HTTPException
 from sqlmodel import select, Session
 from typing import List
 
-from app.db.connection import get_session
-from app.models.finance_models import Category
-from app.schemas.finance_schemas import CreateCategory, ReadCategory, ReadCategoryWithUsers
+from db.connection import get_session
+from models.finance_models import Category
+from schemas.finance_schemas import CreateCategory, ReadCategory, ReadCategoryWithUsers
 from sqlalchemy.orm import selectinload
 
 router = APIRouter(prefix="/categories", tags=["Categories"])

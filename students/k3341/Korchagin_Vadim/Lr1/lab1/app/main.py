@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from app.db.connection import init_db
-from app.routers import (
+from db.connection import init_db
+from routers import (
     auth_router,
     users, 
     categories,
@@ -8,7 +8,8 @@ from app.routers import (
     budgets,
     accounts,
     goals,
-    preferences
+    preferences,
+    parser
 )
 
 app = FastAPI(title="Personal Finance API (with manual Auth)")
@@ -21,6 +22,7 @@ app.include_router(budgets.router)
 app.include_router(accounts.router)
 app.include_router(goals.router)
 app.include_router(preferences.router)
+app.include_router(parser.router)
 
 
 @app.get("/")

@@ -2,8 +2,6 @@ import asyncio
 import aiohttp
 from bs4 import BeautifulSoup
 
-import threading_
-import multiprocessing_
 import async_
 from db.connection import init_db
 

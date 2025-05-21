@@ -2,12 +2,12 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlmodel import Session, select
 from typing import List
 
-from app.db.connection import get_session
-from app.models.finance_models import User
-from app.schemas.finance_schemas import (
+from db.connection import get_session
+from models.finance_models import User
+from schemas.finance_schemas import (
     UserRegister, UserLogin, UserOut
 )
-from app.core.auth import (
+from core.auth import (
     hash_password, verify_password,
     create_access_token, get_current_user
 )

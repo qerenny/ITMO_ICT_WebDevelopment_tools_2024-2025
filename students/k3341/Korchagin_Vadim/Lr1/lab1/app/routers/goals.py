@@ -3,9 +3,9 @@ from sqlmodel import select, Session
 from typing import List
 from datetime import datetime
 
-from app.db.connection import get_session
-from app.models.finance_models import Goal, User
-from app.schemas.finance_schemas import CreateGoal, ReadGoal, ReadGoalWithUser
+from db.connection import get_session
+from models.finance_models import Goal, User
+from schemas.finance_schemas import CreateGoal, ReadGoal, ReadGoalWithUser
 from sqlalchemy.orm import selectinload
 
 router = APIRouter(prefix="/goals", tags=["Goals"])

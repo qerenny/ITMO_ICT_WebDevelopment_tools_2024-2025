@@ -3,9 +3,9 @@ from sqlmodel import select, Session
 from typing import List
 from sqlalchemy.orm import selectinload
 
-from app.db.connection import get_session
-from app.models.finance_models import Account, User
-from app.schemas.finance_schemas import CreateAccount, ReadAccount, ReadAccountWithTransactions
+from db.connection import get_session
+from models.finance_models import Account, User
+from schemas.finance_schemas import CreateAccount, ReadAccount, ReadAccountWithTransactions
 
 router = APIRouter(prefix="/accounts", tags=["Accounts"])
 
