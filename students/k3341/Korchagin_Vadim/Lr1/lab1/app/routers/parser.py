@@ -17,13 +17,6 @@ celery_app = Celery(
 )
 class ParseRequest(BaseModel):
     url: str
-    
-@router.get("/ping-parser")
-async def ping_parser():
-    async with httpx.AsyncClient() as client:
-        r = await client.post("http://parser_service:8001/parse", json={"url": "https://habr.com/ru/users/"})
-        return {"status": r.status_code, "data": r.json()}
-
 
 @router.post("/")
 async def call_parser(request: ParseRequest):
